@@ -9,7 +9,7 @@
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
 		"dev": "vite",
 		"serve": "vite preview",
-		"test": "jest --coverage --config=jest.config.js"
+		"test": "jest --passWithNoTests --coverage --config=jest.config.js"
 	},
 	"repository": {
 		"type": "git",

@@ -4,8 +4,8 @@ module.exports = {
 	automock: true,
 	bail: 3,
 	coverageDirectory: "coverage",
-	coveragePathIgnorePattersn: ["/dist","/test","/node_modules/"],
-	coverageReports: ["text","lcov"],
+	coveragePathIgnorePatterns: ["/lib","/test","/node_modules/"],
+	coverageReporters: ["lcov"],
 	coverageThreshold: {
 		global: {
 			branches: 70,
