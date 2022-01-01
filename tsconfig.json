@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"declaration": true,
+		"esModuleInterop": false,
+		"forceConsistentCasingInFileNames": true,
+		"jsx": "react",
+		"lib": ["DOM", "DOM.Iterable", "ES2021"],
+		"module": "ES2020",
+		"moduleResolution": "node",
+		"isolatedModules": false,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noEmitOnError": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "dist",
+		"removeComments": false,
+		"strictNullChecks": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ES2017",
+		"types": ["vite/client", "jest", "node"]
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "test", "stories"]
+}
