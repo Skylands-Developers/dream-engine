@@ -19,6 +19,7 @@
 		"@typescript-eslint/interface-name-prefix": "off",
 		"@typescript-eslint/explicit-function-return-type": "warn",
 		"@typescript-eslint/no-inferrable-types": "off",
+		"@typescript-eslint/no-unnecessary-condition": "warn",
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "off"
 	},
