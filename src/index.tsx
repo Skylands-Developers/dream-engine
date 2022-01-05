@@ -5,7 +5,7 @@ import './index.css';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<div />
+		<p>Hello World</p>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
