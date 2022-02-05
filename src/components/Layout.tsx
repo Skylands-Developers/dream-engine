@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Home } from './home/Home';
 import { useAuth } from '../hooks/useAuth';
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 
 export function Layout() {
 	const auth = useAuth();
