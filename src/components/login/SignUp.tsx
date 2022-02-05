@@ -1,5 +1,6 @@
 import { Models } from 'appwrite';
 import { Dispatch, SetStateAction, SyntheticEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../api/api';
 import { Action } from '../../types/Action';
 import { FetchState } from '../../types/FetchState';
@@ -10,8 +11,10 @@ export type SignUpProps = {
 };
 export function SignUp(props: SignUpProps): JSX.Element {
 	const { setRegister, dispatch } = props;
+	const navigate = useNavigate();
 
 	const [name, setName] = useState<string>('');
+	const [username, setUsername] = useState<string>('');
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 
@@ -19,10 +22,10 @@ export function SignUp(props: SignUpProps): JSX.Element {
 		e.preventDefault();
 		dispatch({ type: FetchState.INIT });
 		try {
-			API.createAccount(email, password, name).then((user) => {
+			API.createAccount(username, email, password, name).then((user) => {
 				API.createSession(email, password).then((_session) => {
 					dispatch({ type: FetchState.SUCCESS, payload: user });
-					// navigate('/', { state: from });
+					navigate('/');
 				});
 			});
 		} catch (e) {
@@ -33,39 +36,58 @@ export function SignUp(props: SignUpProps): JSX.Element {
 	return (
 		<div className='login'>
 			<form onSubmit={handleSignup}>
-				<label htmlFor='name'>Name</label>
-				<input
-					id='name'
-					name='name'
-					type='text'
-					placeholder='Name'
-					value={name}
-					onChange={(e) => {
-						setName(e.target.value);
-					}}
-				/>
-				<label htmlFor='email'>Email</label>
-				<input
-					id='email'
-					name='email'
-					type='text'
-					placeholder='Email'
-					value={email}
-					onChange={(e) => {
-						setEmail(e.target.value);
-					}}
-				/>
-				<label htmlFor='password'>Password</label>
-				<input
-					id='password'
-					name='password'
-					type='password'
-					placeholder='Password'
-					value={password}
-					onChange={(e) => {
-						setPassword(e.target.value);
-					}}
-				/>
+				<div>
+					<label htmlFor='name'>Name</label>
+					<input
+						id='name'
+						name='name'
+						type='text'
+						placeholder='Name'
+						value={name}
+						onChange={(e) => {
+							setName(e.target.value);
+						}}
+					/>
+				</div>
+				<div>
+					<label htmlFor='username'>Username</label>
+					<input
+						id='username'
+						name='username'
+						type='text'
+						placeholder='Username'
+						value={username}
+						onChange={(e) => {
+							setUsername(e.target.value);
+						}}
+					/>
+				</div>
+				<div>
+					<label htmlFor='email'>Email</label>
+					<input
+						id='email'
+						name='email'
+						type='text'
+						placeholder='Email'
+						value={email}
+						onChange={(e) => {
+							setEmail(e.target.value);
+						}}
+					/>
+				</div>
+				<div>
+					<label htmlFor='password'>Password</label>
+					<input
+						id='password'
+						name='password'
+						type='password'
+						placeholder='Password'
+						value={password}
+						onChange={(e) => {
+							setPassword(e.target.value);
+						}}
+					/>
+				</div>
 				<button disabled={!name || !email || !password} type='submit'>
 					Sign Up
 				</button>

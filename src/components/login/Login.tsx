@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../api/api';
 import { useAuth } from '../../hooks/useAuth';
 import { FetchState } from '../../types/FetchState';
@@ -7,6 +8,7 @@ import { SignUp } from './SignUp';
 
 export function Login(): JSX.Element {
 	const auth = useAuth();
+	const navigate = useNavigate();
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [register, setRegister] = useState<boolean>(false);
@@ -18,6 +20,7 @@ export function Login(): JSX.Element {
 			API.createSession(email, password).then((_session) => {
 				API.getAccount().then((data) => {
 					auth.dispatch({ type: FetchState.SUCCESS, payload: data });
+					navigate('/');
 				});
 			});
 		} catch (e) {
@@ -32,28 +35,32 @@ export function Login(): JSX.Element {
 	return (
 		<div className='login'>
 			<form onSubmit={handleLogin}>
-				<label htmlFor='email'>Email</label>
-				<input
-					id='email'
-					name='email'
-					type='text'
-					placeholder='Email'
-					value={email}
-					onChange={(e) => {
-						setEmail(e.target.value);
-					}}
-				/>
-				<label htmlFor='password'>Password</label>
-				<input
-					id='password'
-					name='password'
-					type='password'
-					placeholder='Password'
-					value={password}
-					onChange={(e) => {
-						setPassword(e.target.value);
-					}}
-				/>
+				<div>
+					<label htmlFor='email'>Email</label>
+					<input
+						id='email'
+						name='email'
+						type='text'
+						placeholder='Email'
+						value={email}
+						onChange={(e) => {
+							setEmail(e.target.value);
+						}}
+					/>
+				</div>
+				<div>
+					<label htmlFor='password'>Password</label>
+					<input
+						id='password'
+						name='password'
+						type='password'
+						placeholder='Password'
+						value={password}
+						onChange={(e) => {
+							setPassword(e.target.value);
+						}}
+					/>
+				</div>
 				<button disabled={!email || !password} type='submit'>
 					Log In
 				</button>

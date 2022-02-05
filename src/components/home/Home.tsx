@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { API } from '../../api/api';
 import { useAuth } from '../../hooks/useAuth';
 import { FetchState } from '../../types/FetchState';
+import './home.scss';
+
 export function Home(): JSX.Element {
 	const auth = useAuth();
 	const navigate = useNavigate();
@@ -49,12 +51,15 @@ export function Home(): JSX.Element {
 				</>
 			)}
 			<button
+				className='secondary'
 				onClick={() => {
 					navigate('/dream');
 				}}>
 				Just Dream Anything
 			</button>
-			<button onClick={handleLogout}>Log Out</button>
+			<button className='danger' onClick={handleLogout}>
+				Log Out
+			</button>
 		</div>
 	);
 }
