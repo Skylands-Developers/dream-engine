@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import './index.scss';
 import { App } from './App';
-
-import './index.css';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -10,3 +10,5 @@ ReactDOM.render(
 	</React.StrictMode>,
 	document.getElementById('root')
 );
+
+reportWebVitals(console.debug);

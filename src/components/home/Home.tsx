@@ -1,11 +1,24 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API } from '../../api/api';
 import { useAuth } from '../../hooks/useAuth';
+import { FetchState } from '../../types/FetchState';
 export function Home(): JSX.Element {
 	const auth = useAuth();
 	const navigate = useNavigate();
 	const [describingADream, isDescribingADream] = useState<boolean>(false);
 	const [dreamDescription, setDreamDescription] = useState<string>('');
+
+	const handleLogout = async () => {
+		auth.dispatch({ type: FetchState.INIT });
+		try {
+			await API.deleteCurrentSession();
+			auth.dispatch({ type: FetchState.SUCCESS, payload: undefined });
+		} catch (e) {
+			auth.dispatch({ type: FetchState.FAILURE });
+		}
+	};
+
 	return (
 		<div className='home'>
 			{describingADream ? (
@@ -29,12 +42,6 @@ export function Home(): JSX.Element {
 				<>
 					<button
 						onClick={() => {
-							navigate('/dream');
-						}}>
-						Just Dream Anything
-					</button>
-					<button
-						onClick={() => {
 							isDescribingADream(true);
 						}}>
 						Describe a Dream
@@ -43,10 +50,11 @@ export function Home(): JSX.Element {
 			)}
 			<button
 				onClick={() => {
-					auth.signout(() => navigate('/'));
+					navigate('/dream');
 				}}>
-				Sign out
+				Just Dream Anything
 			</button>
+			<button onClick={handleLogout}>Log Out</button>
 		</div>
 	);
 }

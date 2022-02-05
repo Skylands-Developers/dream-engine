@@ -1,0 +1,85 @@
+@import '../node_modules/normalize.css/normalize.css';
+@import './colors';
+
+html,
+body {
+	height: 100vh;
+	width: 100vw;
+	font-size: 24px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+body {
+	overflow: hidden;
+	background-color: $background;
+	color: $foreground;
+	font-family: Verdana, sans-serif;
+}
+
+.mainLayout {
+	display: flex;
+	flex-direction: row;
+	flex-flow: column;
+	.authChoices {
+	}
+}
+
+button {
+	min-height: 2rem;
+	height: 2rem;
+	max-height: 2rem;
+	min-width: 128px;
+	background-color: $primary;
+	color: $primaryF;
+	border-radius: 4px;
+	border: none;
+
+	margin: 4px;
+	padding: 6px;
+	transition: all 100ms;
+
+	&:hover {
+		cursor: pointer;
+		box-shadow: 0px 2px 5px 1px $foreground;
+	}
+
+	&:disabled {
+		opacity: 0.6;
+	}
+
+	&.secondary {
+		background-color: $secondary;
+		color: $secondaryF;
+	}
+
+	&.danger {
+		background-color: $danger;
+		color: $dangerF;
+		border: 2px solid $dangerF;
+	}
+}
+
+input {
+	outline: none !important;
+	line-height: 2rem;
+	height: 2rem;
+	max-height: 2rem;
+	min-width: 128px;
+	background-color: $background;
+	color: $foreground;
+	box-shadow: inset 0px 0px 2px 1px $primary;
+	border-radius: 4px;
+	border: none;
+	margin: 4px;
+	padding: 0px 16px;
+
+	&:focus {
+		box-shadow: inset 0px 0px 2px 1px $foreground;
+	}
+
+	&.fluid {
+		width: 100%;
+	}
+}

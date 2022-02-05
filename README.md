@@ -19,3 +19,10 @@ In our **Dream Engine** application, visualizations can be replayed to the exact
 ## Share your dreams
 
 Ever talk to a friend about a cool or weird dream you had? Well now you can share our generated visualizations with them!
+
+# Leveraged Technologies
+
+-   React
+-   Appwrite
+-   Vercel
+-   Docker (Desktop for Windows)
