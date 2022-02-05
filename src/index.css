@@ -1,5 +1,13 @@
 @import '../node_modules/normalize.css/normalize.css';
 
+:root {
+	--background: white;
+	--foreground: #263f60;
+	--primary: #3982b0;
+	--secondary: #263f60;
+	--danger: #7a2020;
+}
+
 html,
 body {
 	height: 100vh;
@@ -8,6 +16,7 @@ body {
 
 body {
 	overflow: hidden;
-	background-color: black;
-	color: white;
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: Verdana, sans-serif;
 }
