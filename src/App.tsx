@@ -5,7 +5,7 @@ import { Home } from './components/home/Home';
 import { Layout } from './components/Layout';
 import { Login } from './components/login/Login';
 
-export function App() {
+export function App(): JSX.Element {
 	return (
 		<BrowserRouter>
 			<AuthProvider>

@@ -5,8 +5,8 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [
 		react({
-			// Only .tsx files
-			include: '**/*.tsx',
+			// Only .ts,.tsx files
+			include: '**/*.ts[x]',
 		}),
 	],
 });

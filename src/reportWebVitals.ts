@@ -1,6 +1,6 @@
 import * as WebVitals from 'web-vitals';
 
-const reportWebVitals = (onPerfEntry: any) => {
+const reportWebVitals = (onPerfEntry: any): void => {
 	if (onPerfEntry && onPerfEntry instanceof Function) {
 		WebVitals.getCLS(onPerfEntry);
 		WebVitals.getFID(onPerfEntry);

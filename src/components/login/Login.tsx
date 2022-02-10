@@ -13,11 +13,11 @@ export function Login(): JSX.Element {
 	const [password, setPassword] = useState<string>('');
 	const [register, setRegister] = useState<boolean>(false);
 
-	const handleLogin = async (e: SyntheticEvent) => {
+	const handleLogin = async (e: SyntheticEvent): Promise<void> => {
 		e.preventDefault();
 		auth.dispatch({ type: FetchState.INIT });
 		try {
-			API.createSession(email, password).then((_session) => {
+			API.createSession(email, password).then((): void => {
 				API.getAccount().then((data) => {
 					auth.dispatch({ type: FetchState.SUCCESS, payload: data });
 					navigate('/');
@@ -43,7 +43,7 @@ export function Login(): JSX.Element {
 						type='text'
 						placeholder='Email'
 						value={email}
-						onChange={(e) => {
+						onChange={(e): void => {
 							setEmail(e.target.value);
 						}}
 					/>
@@ -56,7 +56,7 @@ export function Login(): JSX.Element {
 						type='password'
 						placeholder='Password'
 						value={password}
-						onChange={(e) => {
+						onChange={(e): void => {
 							setPassword(e.target.value);
 						}}
 					/>
@@ -66,11 +66,10 @@ export function Login(): JSX.Element {
 				</button>
 			</form>
 			<p>
-				{' '}
-				Don't have an account ?{' '}
+				Don{`&apos;`}t have an account ?
 				<span
-					style={{ textDecoration: 'underline', cursor: 'pointer' }}
-					onClick={(e) => {
+					style={{ textDecoration: 'underline', cursor: 'pointer', marginLeft: '8px' }}
+					onClick={(e): void => {
 						e.preventDefault();
 						setRegister(true);
 					}}>

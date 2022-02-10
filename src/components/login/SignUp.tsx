@@ -18,12 +18,12 @@ export function SignUp(props: SignUpProps): JSX.Element {
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 
-	const handleSignup = async (e: SyntheticEvent) => {
+	const handleSignup = async (e: SyntheticEvent): Promise<void> => {
 		e.preventDefault();
 		dispatch({ type: FetchState.INIT });
 		try {
 			API.createAccount(username, email, password, name).then((user) => {
-				API.createSession(email, password).then((_session) => {
+				API.createSession(email, password).then((): void => {
 					dispatch({ type: FetchState.SUCCESS, payload: user });
 					navigate('/');
 				});
@@ -44,7 +44,7 @@ export function SignUp(props: SignUpProps): JSX.Element {
 						type='text'
 						placeholder='Name'
 						value={name}
-						onChange={(e) => {
+						onChange={(e): void => {
 							setName(e.target.value);
 						}}
 					/>
@@ -57,7 +57,7 @@ export function SignUp(props: SignUpProps): JSX.Element {
 						type='text'
 						placeholder='Username'
 						value={username}
-						onChange={(e) => {
+						onChange={(e): void => {
 							setUsername(e.target.value);
 						}}
 					/>
@@ -70,7 +70,7 @@ export function SignUp(props: SignUpProps): JSX.Element {
 						type='text'
 						placeholder='Email'
 						value={email}
-						onChange={(e) => {
+						onChange={(e): void => {
 							setEmail(e.target.value);
 						}}
 					/>
@@ -83,7 +83,7 @@ export function SignUp(props: SignUpProps): JSX.Element {
 						type='password'
 						placeholder='Password'
 						value={password}
-						onChange={(e) => {
+						onChange={(e): void => {
 							setPassword(e.target.value);
 						}}
 					/>
@@ -93,11 +93,10 @@ export function SignUp(props: SignUpProps): JSX.Element {
 				</button>
 			</form>
 			<p>
-				{' '}
-				Already have an account ?{' '}
+				Already have an account ?
 				<span
-					style={{ textDecoration: 'underline', cursor: 'pointer' }}
-					onClick={(e) => {
+					style={{ textDecoration: 'underline', cursor: 'pointer', marginLeft: '8px' }}
+					onClick={(e): void => {
 						e.preventDefault();
 						setRegister(false);
 					}}>

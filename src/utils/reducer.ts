@@ -13,7 +13,7 @@ export const reducer =
 					...state,
 					isLoading: false,
 					isError: false,
-					[key]: action.payload!,
+					[key]: action.payload,
 				};
 			case FetchState.FAILURE:
 				return { ...state, isLoading: false, isError: true };

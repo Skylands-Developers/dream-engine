@@ -11,7 +11,7 @@ export function Home(): JSX.Element {
 	const [describingADream, isDescribingADream] = useState<boolean>(false);
 	const [dreamDescription, setDreamDescription] = useState<string>('');
 
-	const handleLogout = async () => {
+	const handleLogout = async (): Promise<void> => {
 		auth.dispatch({ type: FetchState.INIT });
 		try {
 			await API.deleteCurrentSession();
@@ -28,13 +28,13 @@ export function Home(): JSX.Element {
 					<input
 						placeholder='Describe your dream...'
 						value={dreamDescription}
-						onChange={(p) => {
+						onChange={(p): void => {
 							setDreamDescription(p.currentTarget.value);
 						}}
 					/>
 					<button disabled={!dreamDescription}>Dream</button>
 					<button
-						onClick={() => {
+						onClick={(): void => {
 							isDescribingADream(false);
 						}}>
 						{'<-'}
@@ -43,7 +43,7 @@ export function Home(): JSX.Element {
 			) : (
 				<>
 					<button
-						onClick={() => {
+						onClick={(): void => {
 							isDescribingADream(true);
 						}}>
 						Describe a Dream
@@ -52,7 +52,7 @@ export function Home(): JSX.Element {
 			)}
 			<button
 				className='secondary'
-				onClick={() => {
+				onClick={(): void => {
 					navigate('/dream');
 				}}>
 				Just Dream Anything

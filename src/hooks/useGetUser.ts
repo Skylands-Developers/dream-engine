@@ -16,7 +16,7 @@ export const useGetUser = (): [AppState, Dispatch<Action<Models.User<Models.Pref
 
 	useEffect(() => {
 		let didCancel = false;
-		const fetch = async () => {
+		const fetch = async (): Promise<void> => {
 			dispatch({ type: FetchState.INIT });
 			try {
 				const account = await API.getAccount();
@@ -30,7 +30,7 @@ export const useGetUser = (): [AppState, Dispatch<Action<Models.User<Models.Pref
 			}
 		};
 		fetch();
-		return () => {
+		return (): void => {
 			didCancel = true;
 		};
 	}, []);
